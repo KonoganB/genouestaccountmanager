@@ -92,7 +92,6 @@ export class ProjectComponent implements OnInit {
       })
       .subscribe(
         (resp) => {
-          console.log(resp);
           this.request_msg = "An email have been sent to admin";
           this.new_project = {};
         },

@@ -114,7 +114,6 @@ export class ProjectsComponent implements OnInit {
 
         this.configService.config.subscribe(
             resp => {
-                console.log(resp)
                 this.config = resp;
                 this.new_project.expire = this.date_convert(new Date().getTime() + this.config.project.default_expire * this.day_time)
                 if (this.config.project && this.config.project.default_path) {
@@ -199,7 +198,6 @@ export class ProjectsComponent implements OnInit {
         }
         this.add_project_msg = '';
         this.add_project_error_msg = '';
-        console.log("go");
         this.projectService.add({
             'id': this.new_project.id,
             'owner': this.new_project.owner,
@@ -235,8 +233,7 @@ export class ProjectsComponent implements OnInit {
         this.projects = [];
         this.projectService.list(true).subscribe(
             resp => {
-                console.log(resp)
-                console.log('---')
+
                 if (resp.length == 0) {
                     return;
                 }
@@ -254,7 +251,7 @@ export class ProjectsComponent implements OnInit {
                             console.log({ 'project': data[i], 'user': data[i]["add_requests"][j] })
                             this.add_requests.push({ 'project': data[i], 'user': data[i]["add_requests"][j] });
                         }
-                        console.log(data[i]["add_requests"].length)
+
                         this.requests_number += data[i]["add_requests"].length;
                     }
                     if (data[i]["remove_requests"]) {
